@@ -30,12 +30,12 @@ class Page{
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 //		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // так работает
 
-		if($arrayData){
-			$jsonData = json_encode($arrayData);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-		} else {
-	                curl_setopt($ch, CURLOPT_HTTPHEADER, array_merge($headers, ['Content-Length: 0']));
-        	}
+        if ($arrayData) {
+            $jsonData = json_encode($arrayData);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+        } else {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array_merge($headers, ['Content-Length: 0']));
+        }
 
 		$response = curl_exec($ch);
 
